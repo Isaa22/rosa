@@ -1,4 +1,4 @@
-/* Fundo do jardim */
+/* Estilos gerais */
 body {
     margin: 0;
     padding: 0;
@@ -6,7 +6,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom, #87CEEB 0%, #E0F7FA 100%);
+    background: linear-gradient(to bottom, #87CEEB, #E0F7FA);
     overflow: hidden;
     font-family: 'Arial', sans-serif;
 }
@@ -17,18 +17,66 @@ body {
     height: 100%;
 }
 
-/* Rosa completa */
+/* Vaso */
+.vaso {
+    position: absolute;
+    width: 120px;
+    height: 100px;
+    background: linear-gradient(45deg, #8B4513, #A0522D);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 0 0 20px 20px;
+    z-index: 5;
+}
+
+/* Caule */
+.caule {
+    position: absolute;
+    width: 15px;
+    height: 300px;
+    background: linear-gradient(to right, #2d5a27, #3a7d34);
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 6;
+    border-radius: 5px;
+}
+
+/* Folhas */
+.folha {
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    background: #3a7d34;
+    border-radius: 50% 0 50% 50%;
+    z-index: 7;
+    filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.3));
+}
+
+.f1 {
+    bottom: 200px;
+    left: calc(50% + 20px);
+    transform: rotate(30deg) skewX(20deg);
+}
+
+.f2 {
+    bottom: 250px;
+    left: calc(50% - 40px);
+    transform: rotate(-20deg) skewX(-20deg);
+}
+
+/* Rosa */
 .rosa {
     position: absolute;
     width: 200px;
     height: 200px;
-    top: 30%;
+    bottom: 380px;
     left: 50%;
     transform: translateX(-50%);
     cursor: pointer;
     z-index: 10;
     animation: balancar 5s infinite alternate;
-    transform-origin: bottom center;
 }
 
 @keyframes balancar {
@@ -36,7 +84,6 @@ body {
     50% { transform: translateX(-50%) rotate(2deg); }
 }
 
-/* Centro da rosa */
 .centro-rosa {
     position: absolute;
     width: 40px;
@@ -46,118 +93,68 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 
-        0 0 10px #8b0000,
-        0 0 20px #ff4500,
-        0 0 30px #ff8c00;
+    box-shadow: 0 0 10px #8b0000, 0 0 20px #ff4500;
     z-index: 15;
 }
 
-/* Camadas de pétalas */
 .camada-petalas {
     position: absolute;
     width: 100%;
     height: 100%;
 }
 
-/* Estilo base das pétalas */
 .petala {
     position: absolute;
-    background: linear-gradient(to bottom, #ff3366 0%, #cc0033 100%);
+    background: linear-gradient(to bottom, #ff3366, #cc0033);
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    box-shadow: 
-        inset 5px 5px 10px rgba(255,255,255,0.3),
-        inset -5px -5px 10px rgba(0,0,0,0.2);
+    box-shadow: inset 5px 5px 10px rgba(255,255,255,0.3);
     filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
-    z-index: 11;
     transition: all 0.5s;
 }
 
-/* Pequenas - camada interna */
+/* Posicionamento das pétalas */
 .pequenas .petala {
     width: 60px;
     height: 80px;
-    z-index: 12;
+    z-index: 14;
 }
+.pequenas .petala:nth-child(1) { transform: rotate(0deg) translateY(-30px); }
+.pequenas .petala:nth-child(2) { transform: rotate(72deg) translateY(-30px); }
+.pequenas .petala:nth-child(3) { transform: rotate(144deg) translateY(-30px); }
+.pequenas .petala:nth-child(4) { transform: rotate(216deg) translateY(-30px); }
+.pequenas .petala:nth-child(5) { transform: rotate(288deg) translateY(-30px); }
 
-.pequenas .p1 { transform: rotate(0deg) translateY(-30px); }
-.pequenas .p2 { transform: rotate(72deg) translateY(-30px); }
-.pequenas .p3 { transform: rotate(144deg) translateY(-30px); }
-.pequenas .p4 { transform: rotate(216deg) translateY(-30px); }
-.pequenas .p5 { transform: rotate(288deg) translateY(-30px); }
-
-/* Médias - camada intermediária */
 .medias .petala {
     width: 80px;
     height: 100px;
-    z-index: 11;
+    z-index: 13;
 }
+.medias .petala:nth-child(1) { transform: rotate(30deg) translateY(-40px); }
+.medias .petala:nth-child(2) { transform: rotate(90deg) translateY(-40px); }
+.medias .petala:nth-child(3) { transform: rotate(150deg) translateY(-40px); }
+.medias .petala:nth-child(4) { transform: rotate(210deg) translateY(-40px); }
+.medias .petala:nth-child(5) { transform: rotate(270deg) translateY(-40px); }
+.medias .petala:nth-child(6) { transform: rotate(330deg) translateY(-40px); }
 
-.medias .p6 { transform: rotate(30deg) translateY(-40px); }
-.medias .p7 { transform: rotate(90deg) translateY(-40px); }
-.medias .p8 { transform: rotate(150deg) translateY(-40px); }
-.medias .p9 { transform: rotate(210deg) translateY(-40px); }
-.medias .p10 { transform: rotate(270deg) translateY(-40px); }
-.medias .p11 { transform: rotate(330deg) translateY(-40px); }
-
-/* Grandes - camada externa */
 .grandes .petala {
     width: 100px;
     height: 120px;
-    z-index: 10;
+    z-index: 12;
 }
-
-.grandes .p12 { transform: rotate(15deg) translateY(-50px); }
-.grandes .p13 { transform: rotate(60deg) translateY(-50px); }
-.grandes .p14 { transform: rotate(105deg) translateY(-50px); }
-.grandes .p15 { transform: rotate(150deg) translateY(-50px); }
-.grandes .p16 { transform: rotate(195deg) translateY(-50px); }
-.grandes .p17 { transform: rotate(240deg) translateY(-50px); }
-.grandes .p18 { transform: rotate(285deg) translateY(-50px); }
-
-/* Caule e folhas */
-.caule {
-    position: absolute;
-    width: 12px;
-    height: 300px;
-    background: linear-gradient(to right, #2d5a27 0%, #3a7d34 100%);
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 5;
-    border-radius: 5px;
-}
-
-.folha {
-    position: absolute;
-    width: 80px;
-    height: 40px;
-    background: #3a7d34;
-    border-radius: 50% 0 50% 50%;
-    z-index: 6;
-    filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.3));
-}
-
-.f1 {
-    top: 55%;
-    left: calc(50% + 20px);
-    transform: rotate(30deg) skewX(20deg);
-}
-
-.f2 {
-    top: 65%;
-    left: calc(50% - 40px);
-    transform: rotate(-20deg) skewX(-20deg);
-}
+.grandes .petala:nth-child(1) { transform: rotate(15deg) translateY(-50px); }
+.grandes .petala:nth-child(2) { transform: rotate(60deg) translateY(-50px); }
+.grandes .petala:nth-child(3) { transform: rotate(105deg) translateY(-50px); }
+.grandes .petala:nth-child(4) { transform: rotate(150deg) translateY(-50px); }
+.grandes .petala:nth-child(5) { transform: rotate(195deg) translateY(-50px); }
+.grandes .petala:nth-child(6) { transform: rotate(240deg) translateY(-50px); }
+.grandes .petala:nth-child(7) { transform: rotate(285deg) translateY(-50px); }
 
 /* Efeitos de explosão */
 .petala-explosao {
     position: absolute;
-    background: linear-gradient(to bottom, #ff3366 0%, #cc0033 100%);
+    background: linear-gradient(to bottom, #ff3366, #cc0033);
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    box-shadow: 
-        inset 5px 5px 10px rgba(255,255,255,0.3),
-        inset -5px -5px 10px rgba(0,0,0,0.2);
+    box-shadow: inset 5px 5px 10px rgba(255,255,255,0.3);
     filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
     z-index: 20;
     animation: voar 3s ease-out forwards;
@@ -168,18 +165,38 @@ body {
     100% { transform: translate(var(--tx), var(--ty)) rotate(720deg); opacity: 0; }
 }
 
-/* Mensagem romântica */
-.mensagem {
-    position: absolute;
+/* Elementos que aparecem após o clique */
+.hidden {
+    display: none;
+    opacity: 0;
+}
+
+#video-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 30;
+    width: 80%;
+    max-width: 800px;
+    transition: opacity 2s;
+}
+
+#mensagem {
+    position: fixed;
     top: 20%;
     left: 50%;
     transform: translateX(-50%);
     font-size: 3rem;
-    color: #fff;
+    color: white;
     text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493;
-    opacity: 0;
-    transition: opacity 2s;
-    z-index: 30;
+    z-index: 31;
     text-align: center;
     width: 100%;
+    transition: opacity 2s;
+}
+
+.show {
+    display: block;
+    opacity: 1;
 }
