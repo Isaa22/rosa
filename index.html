@@ -3,23 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rosa CSS Mágica</title>
+    <title>Rosa Realista</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="jardim">
         <div id="rosa" class="rosa">
+            <!-- Centro da rosa -->
             <div class="centro-rosa"></div>
-            <div class="petala p1"></div>
-            <div class="petala p2"></div>
-            <div class="petala p3"></div>
-            <div class="petala p4"></div>
-            <div class="petala p5"></div>
-            <div class="petala p6"></div>
-            <div class="petala p7"></div>
-            <div class="petala p8"></div>
+            
+            <!-- Camadas de pétalas (3 camadas) -->
+            <div class="camada-petalas pequenas">
+                <div class="petala p1"></div>
+                <div class="petala p2"></div>
+                <div class="petala p3"></div>
+                <div class="petala p4"></div>
+                <div class="petala p5"></div>
+            </div>
+            
+            <div class="camada-petalas medias">
+                <div class="petala p6"></div>
+                <div class="petala p7"></div>
+                <div class="petala p8"></div>
+                <div class="petala p9"></div>
+                <div class="petala p10"></div>
+                <div class="petala p11"></div>
+            </div>
+            
+            <div class="camada-petalas grandes">
+                <div class="petala p12"></div>
+                <div class="petala p13"></div>
+                <div class="petala p14"></div>
+                <div class="petala p15"></div>
+                <div class="petala p16"></div>
+                <div class="petala p17"></div>
+                <div class="petala p18"></div>
+            </div>
         </div>
+        
+        <!-- Caule e folhas -->
+        <div class="caule"></div>
+        <div class="folha f1"></div>
+        <div class="folha f2"></div>
     </div>
+    
     <audio id="musica" src="assets/musica.mp3" loop></audio>
     <script src="script.js"></script>
 </body>
