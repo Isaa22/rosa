@@ -1,43 +1,26 @@
-<div class="rosa">
-    <div class="petala"></div>
-    <div class="petala"></div>
-    <div class="petala"></div>
-    <!-- Adicione mais pétalas -->
-    <div class="centro-rosa"></div>
-</div>
-
-<style>
-.rosa {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    margin: 100px auto;
-    cursor: pointer;
-}
-
-/* Caule corrigido */
-.rosa:after {
-    content: "";
-    position: absolute;
-    height: 250px;
-    width: 10px;
-    background: linear-gradient(to right, #2d5a27, #3a7d34);
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: -1;
-    border-radius: 5px;
-}
-
-.centro-rosa {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background: #5c1a1a;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 10px #8b0000;
-}
-</style>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rosa CSS Mágica</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="rosa" class="rosa">
+            <div class="centro-rosa"></div>
+            <div class="petala p1"></div>
+            <div class="petala p2"></div>
+            <div class="petala p3"></div>
+            <div class="petala p4"></div>
+            <div class="petala p5"></div>
+            <div class="petala p6"></div>
+            <div class="petala p7"></div>
+            <div class="petala p8"></div>
+        </div>
+    </div>
+    <audio id="musica" src="assets/musica.mp3" loop></audio>
+    <script src="script.js"></script>
+</body>
+</html>
