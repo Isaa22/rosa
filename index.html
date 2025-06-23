@@ -3,50 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rosa Romântica com Vídeo</title>
+    <title>Rosa Mágica Romântica</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="fundo-brilhante"></div>
+    
     <div class="jardim">
-        <!-- Rosa com caule -->
-        <div class="vaso"></div>
+        <!-- Caule e folhas -->
         <div class="caule"></div>
         <div class="folha f1"></div>
         <div class="folha f2"></div>
         
+        <!-- Rosa principal -->
         <div id="rosa" class="rosa">
             <div class="centro-rosa"></div>
             <!-- 3 camadas de pétalas -->
-            <div class="camada-petalas pequenas">
-                <div class="petala"></div><div class="petala"></div>
-                <div class="petala"></div><div class="petala"></div>
-                <div class="petala"></div>
-            </div>
-            <div class="camada-petalas medias">
-                <div class="petala"></div><div class="petala"></div>
-                <div class="petala"></div><div class="petala"></div>
-                <div class="petala"></div><div class="petala"></div>
-            </div>
-            <div class="camada-petalas grandes">
-                <div class="petala"></div><div class="petala"></div>
-                <div class="petala"></div><div class="petala"></div>
-                <div class="petala"></div><div class="petala"></div>
-                <div class="petala"></div>
-            </div>
+            <div class="camada-petalas pequenas"></div>
+            <div class="camada-petalas medias"></div>
+            <div class="camada-petalas grandes"></div>
         </div>
     </div>
 
-    <!-- Elementos que aparecerão após o clique -->
-    <div id="video-container" class="hidden">
-        <iframe id="video-romantico" width="560" height="315" 
-                src="https://www.youtube.com/embed/SU6U0kHsXXM?autoplay=1&controls=0&showinfo=0&rel=0" 
+    <!-- Vídeo (inicialmente escondido) -->
+    <div id="video-container" class="escondido">
+        <iframe id="video-romantico" src="https://www.youtube.com/embed/SU6U0kHsXXM?enablejsapi=1" 
                 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen></iframe>
     </div>
     
-    <div id="mensagem" class="hidden">Para alguém muito especial... ❤️</div>
+    <!-- Mensagem romântica -->
+    <div id="mensagem" class="escondido">Para quem ilumina meu mundo... ❤️</div>
     
-    <audio id="musica" src="assets/musica.mp3"></audio>
+    <audio id="musica" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
     <script src="script.js"></script>
 </body>
 </html>
