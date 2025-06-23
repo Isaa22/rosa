@@ -1,67 +1,68 @@
-/* Estilos gerais */
+/* Fundo brilhante animado */
 body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to bottom, #87CEEB, #E0F7FA);
     overflow: hidden;
     font-family: 'Arial', sans-serif;
 }
 
+.fundo-brilhante {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ffcce6, #ff99cc, #ff66b3, #ff3399);
+    background-size: 400% 400%;
+    animation: brilhoFundo 15s ease infinite;
+    z-index: -1;
+}
+
+@keyframes brilhoFundo {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Jardim e rosa */
 .jardim {
     position: relative;
     width: 100%;
     height: 100%;
 }
 
-/* Vaso */
-.vaso {
-    position: absolute;
-    width: 120px;
-    height: 100px;
-    background: linear-gradient(45deg, #8B4513, #A0522D);
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 0 0 20px 20px;
-    z-index: 5;
-}
-
-/* Caule */
+/* Caule e folhas */
 .caule {
     position: absolute;
     width: 15px;
     height: 300px;
     background: linear-gradient(to right, #2d5a27, #3a7d34);
-    bottom: 100px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 6;
+    z-index: 5;
     border-radius: 5px;
 }
 
-/* Folhas */
 .folha {
     position: absolute;
     width: 80px;
     height: 40px;
     background: #3a7d34;
     border-radius: 50% 0 50% 50%;
-    z-index: 7;
+    z-index: 6;
     filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.3));
 }
 
 .f1 {
-    bottom: 200px;
+    bottom: 100px;
     left: calc(50% + 20px);
     transform: rotate(30deg) skewX(20deg);
 }
 
 .f2 {
-    bottom: 250px;
+    bottom: 150px;
     left: calc(50% - 40px);
     transform: rotate(-20deg) skewX(-20deg);
 }
@@ -71,12 +72,13 @@ body {
     position: absolute;
     width: 200px;
     height: 200px;
-    bottom: 380px;
+    bottom: 300px;
     left: 50%;
     transform: translateX(-50%);
     cursor: pointer;
     z-index: 10;
     animation: balancar 5s infinite alternate;
+    transform-origin: bottom center;
 }
 
 @keyframes balancar {
@@ -93,7 +95,9 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0 0 10px #8b0000, 0 0 20px #ff4500;
+    box-shadow: 
+        0 0 10px #8b0000,
+        0 0 20px #ff4500;
     z-index: 15;
 }
 
@@ -103,51 +107,18 @@ body {
     height: 100%;
 }
 
-.petala {
-    position: absolute;
-    background: linear-gradient(to bottom, #ff3366, #cc0033);
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    box-shadow: inset 5px 5px 10px rgba(255,255,255,0.3);
-    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
-    transition: all 0.5s;
-}
-
-/* Posicionamento das pétalas */
 .pequenas .petala {
     width: 60px;
     height: 80px;
+    background: linear-gradient(to bottom, #ff3366, #cc0033);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: absolute;
+    box-shadow: inset 5px 5px 10px rgba(255,255,255,0.3);
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
     z-index: 14;
 }
-.pequenas .petala:nth-child(1) { transform: rotate(0deg) translateY(-30px); }
-.pequenas .petala:nth-child(2) { transform: rotate(72deg) translateY(-30px); }
-.pequenas .petala:nth-child(3) { transform: rotate(144deg) translateY(-30px); }
-.pequenas .petala:nth-child(4) { transform: rotate(216deg) translateY(-30px); }
-.pequenas .petala:nth-child(5) { transform: rotate(288deg) translateY(-30px); }
 
-.medias .petala {
-    width: 80px;
-    height: 100px;
-    z-index: 13;
-}
-.medias .petala:nth-child(1) { transform: rotate(30deg) translateY(-40px); }
-.medias .petala:nth-child(2) { transform: rotate(90deg) translateY(-40px); }
-.medias .petala:nth-child(3) { transform: rotate(150deg) translateY(-40px); }
-.medias .petala:nth-child(4) { transform: rotate(210deg) translateY(-40px); }
-.medias .petala:nth-child(5) { transform: rotate(270deg) translateY(-40px); }
-.medias .petala:nth-child(6) { transform: rotate(330deg) translateY(-40px); }
-
-.grandes .petala {
-    width: 100px;
-    height: 120px;
-    z-index: 12;
-}
-.grandes .petala:nth-child(1) { transform: rotate(15deg) translateY(-50px); }
-.grandes .petala:nth-child(2) { transform: rotate(60deg) translateY(-50px); }
-.grandes .petala:nth-child(3) { transform: rotate(105deg) translateY(-50px); }
-.grandes .petala:nth-child(4) { transform: rotate(150deg) translateY(-50px); }
-.grandes .petala:nth-child(5) { transform: rotate(195deg) translateY(-50px); }
-.grandes .petala:nth-child(6) { transform: rotate(240deg) translateY(-50px); }
-.grandes .petala:nth-child(7) { transform: rotate(285deg) translateY(-50px); }
+/* Posicionamento das pétalas (gerado pelo JavaScript) */
 
 /* Efeitos de explosão */
 .petala-explosao {
@@ -165,8 +136,8 @@ body {
     100% { transform: translate(var(--tx), var(--ty)) rotate(720deg); opacity: 0; }
 }
 
-/* Elementos que aparecem após o clique */
-.hidden {
+/* Vídeo e mensagem */
+.escondido {
     display: none;
     opacity: 0;
 }
@@ -179,24 +150,25 @@ body {
     z-index: 30;
     width: 80%;
     max-width: 800px;
-    transition: opacity 2s;
+    aspect-ratio: 16/9;
+    transition: opacity 1s;
 }
 
 #mensagem {
     position: fixed;
-    top: 20%;
+    top: 15%;
     left: 50%;
     transform: translateX(-50%);
     font-size: 3rem;
     color: white;
-    text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493;
+    text-shadow: 0 0 15px #ff69b4, 0 0 25px #ff1493;
     z-index: 31;
     text-align: center;
-    width: 100%;
-    transition: opacity 2s;
+    width: 90%;
+    transition: opacity 1s;
 }
 
-.show {
+.mostrar {
     display: block;
     opacity: 1;
 }
