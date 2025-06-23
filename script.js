@@ -1,113 +1,102 @@
 document.addEventListener('DOMContentLoaded', function() {
     const rosa = document.getElementById('rosa');
     const musica = document.getElementById('musica');
-    const videoContainer = document.getElementById('video-container');
-    const mensagem = document.getElementById('mensagem');
-    const jardim = document.querySelector('.jardim');
+    const container = document.querySelector('.container');
     
-    // Criar pétalas dinamicamente
-    function criarPetalas() {
-        const camadas = {
-            pequenas: { count: 5, size: [60, 80], distance: 30 },
-            medias: { count: 6, size: [80, 100], distance: 40 },
-            grandes: { count: 7, size: [100, 120], distance: 50 }
-        };
+    // 1. Criar pétalas flutuantes
+    function criarPetalaFlutuante() {
+        const petala = document.createElement('div');
+        petala.className = 'flutuante';
         
-        for (const [classe, config] of Object.entries(camadas)) {
-            const camada = document.querySelector(`.${classe}`);
-            
-            for (let i = 0; i < config.count; i++) {
-                const petala = document.createElement('div');
-                petala.className = 'petala';
-                petala.style.width = `${config.size[0]}px`;
-                petala.style.height = `${config.size[1]}px`;
-                
-                const angle = (360 / config.count) * i;
-                petala.style.transform = `rotate(${angle}deg) translateY(-${config.distance}px)`;
-                
-                camada.appendChild(petala);
-            }
-        }
+        const startX = Math.random() * window.innerWidth;
+        const duration = Math.random() * 5 + 4;
+        
+        petala.style.left = `${startX}px`;
+        petala.style.top = '-50px';
+        petala.style.transform = `rotate(${Math.random() * 360}deg)`;
+        petala.style.animationDuration = `${duration}s`;
+        
+        container.appendChild(petala);
+        
+        // Remover após animação
+        setTimeout(() => petala.remove(), duration * 1000);
     }
     
-    criarPetalas();
+    setInterval(criarPetalaFlutuante, 800);
     
-    // Evento ao clicar na rosa
+    // 2. Evento ao clicar na rosa
     rosa.addEventListener('click', function() {
-        // Esconder a rosa
-        rosa.style.display = 'none';
-        
         // Tocar música
         musica.currentTime = 0;
         musica.volume = 0.7;
         musica.play();
         
-        // Explodir pétalas (100 no total)
-        const totalPetalas = 100;
-        let petalasCriadas = 0;
+        // Esconder rosa principal
+        rosa.style.display = 'none';
         
-        function explodirPetalas() {
-            const grupo = Math.min(10, totalPetalas - petalasCriadas);
-            
-            for (let i = 0; i < grupo; i++) {
+        // A. Explosão de pétalas
+        for (let i = 0; i < 50; i++) {
+            setTimeout(() => {
                 const petala = document.createElement('div');
-                petala.className = 'petala-explosao';
-                
-                // Tamanho aleatório
-                const tamanho = Math.random() * 50 + 30;
-                petala.style.width = `${tamanho}px`;
-                petala.style.height = `${tamanho * 1.5}px`;
-                
-                // Posição inicial (centro da rosa)
+                petala.className = 'flutuante';
                 petala.style.left = '50%';
-                petala.style.top = '30%';
+                petala.style.top = '50%';
+                petala.style.width = `${Math.random() * 40 + 20}px`;
+                petala.style.height = `${Math.random() * 60 + 30}px`;
+                petala.style.background = `linear-gradient(45deg, #ff0000, #ff${Math.floor(Math.random() * 100 + 100)})`;
                 
-                // Direção aleatória
                 const angle = Math.random() * Math.PI * 2;
-                const distance = Math.random() * 500 + 200;
-                petala.style.setProperty('--tx', `${Math.cos(angle) * distance}px`);
-                petala.style.setProperty('--ty', `${Math.sin(angle) * distance}px`);
-                petala.style.animationDuration = `${Math.random() * 2 + 1}s`;
+                const distance = Math.random() * 500 + 150;
+                const duration = Math.random() * 4 + 2;
                 
-                // Cor aleatória
-                const hue = Math.random() * 20 + 330;
-                petala.style.background = `linear-gradient(to bottom, hsl(${hue}, 100%, 70%), hsl(${hue}, 100%, 50%))`;
+                petala.style.animationDuration = `${duration}s`;
+                container.appendChild(petala);
                 
-                jardim.appendChild(petala);
+                setTimeout(() => {
+                    petala.style.left = `${50 + Math.cos(angle) * distance}%`;
+                    petala.style.top = `${50 + Math.sin(angle) * distance}%`;
+                }, 10);
                 
-                // Remover após animação
-                setTimeout(() => petala.remove(), 3000);
-                
-                petalasCriadas++;
-            }
-            
-            // Mostrar vídeo e mensagem quando 50% das pétalas explodiram
-            if (petalasCriadas === Math.floor(totalPetalas / 2)) {
-                videoContainer.classList.add('mostrar');
-                mensagem.classList.add('mostrar');
-                
-                // Iniciar vídeo (para YouTube API)
-                if (typeof YT !== 'undefined' && YT.Player) {
-                    new YT.Player('video-romantico', {
-                        events: {
-                            'onReady': (event) => event.target.playVideo()
-                        }
-                    });
-                }
-            }
-            
-            // Continuar até criar todas as pétalas
-            if (petalasCriadas < totalPetalas) {
-                setTimeout(explodirPetalas, 200);
-            }
+                setTimeout(() => petala.remove(), duration * 1000);
+            }, i * 50);
         }
         
-        explodirPetalas();
+        // B. Corações
+        for(let i = 0; i < 25; i++) {
+            setTimeout(() => {
+                const coracao = document.createElement('div');
+                coracao.className = 'coracao';
+                coracao.style.left = `${50 + (Math.random() - 0.5) * 40}%`;
+                coracao.style.top = `${50 + (Math.random() - 0.5) * 40}%`;
+                coracao.style.width = `${Math.random() * 30 + 20}px`;
+                coracao.style.height = coracao.style.width;
+                coracao.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                container.appendChild(coracao);
+                
+                setTimeout(() => coracao.remove(), 5000);
+            }, i * 200);
+        }
+        
+        // C. Mensagem principal
+        const mensagem = document.createElement('div');
+        mensagem.className = 'mensagem';
+        mensagem.innerHTML = 'O Amor é Mágico!<br>💖';
+        container.appendChild(mensagem);
+        
+        setTimeout(() => mensagem.style.opacity = '1', 500);
+        
+        // D. Botão de reiniciar
+        setTimeout(() => {
+            const botao = document.createElement('button');
+            botao.className = 'botao-reiniciar';
+            botao.textContent = 'Ver Novamente';
+            document.body.appendChild(botao);
+            
+            setTimeout(() => botao.style.opacity = '1', 100);
+            
+            botao.addEventListener('click', function() {
+                location.reload();
+            });
+        }, 3000);
     });
-    
-    // Carregar API do YouTube
-    const tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 });
